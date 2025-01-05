@@ -1,16 +1,36 @@
-# todoapp
+# TodoApp
 
-A new Flutter project.
+A Flutter-based task management app with Firebase integration. Manage tasks in categories like "Today," "Tomorrow," and "Next Week" with real-time updates and a sleek UI.
 
-## Getting Started
+## Features
+- Task categorization for better organization.
+- Real-time data sync via Firebase Firestore.
+- Cross-platform support (iOS and Android).
 
-This project is a starting point for a Flutter application.
+## Prerequisites
+- Flutter SDK (3.0.0+), Dart SDK, Android Studio/VS Code.
+- Firebase setup for the app.
 
-A few resources to get you started if this is your first Flutter project:
+## Setup Instructions
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/your-repo/todoapp.git
+   cd todoapp
+   flutter pub get
+   ```
+2. Configure Firebase: Replace `firebase_options.dart` with your Firebase config.
+3. **Comment Out `.gitattributes`:**  
+   Open `.gitattributes` and comment its content:  
+   ```plaintext
+   #*.dart linguist-language=Dart
+   ```
+4. Run the app:  
+   ```bash
+   flutter run
+   ```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Contribution
+Fork the repo, create a branch, and submit a pull request.  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## License
+This project is licensed under the [MIT License](LICENSE).
