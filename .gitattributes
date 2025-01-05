@@ -14,7 +14,7 @@ CMakeLists.txt linguist-language=ignore
 *.json linguist-language=ignore
 *.gradle linguist-language=ignore
 *.java linguist-language=ignore
-*.dart merge=union
+*.cmake merge=union
 
 
 # Mark build and asset directories as vendor
