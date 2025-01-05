@@ -3,7 +3,7 @@
 
 # Ignore other languages in the stats
 *.cpp linguist-language=ignore
-//*.cmake linguist-language=ignore
+*.cmake linguist-language=ignore
 *.swift linguist-language=ignore
 *.c linguist-language=ignore
 *.html linguist-language=ignore
