@@ -1,4 +1,4 @@
-# Force Dart files to count as primary language
+# Set Dart as the primary language
 *.dart linguist-language=Dart
 
 # Ignore other languages in the stats
