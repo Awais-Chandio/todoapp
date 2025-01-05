@@ -151,14 +151,24 @@ class _HomeState extends State<Home> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "HELLO\nAWAIS",
-              style: TextStyle(fontSize: 36, color: Colors.white, fontWeight: FontWeight.bold),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "HELLO AWAIS",
+                  style: TextStyle(fontSize: 36, color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+              ],
             ),
             const SizedBox(height: 10),
-            const Text(
-              "Add your tasks here",
-              style: TextStyle(fontSize: 24, color: Colors.white70, fontWeight: FontWeight.w400),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Add your tasks here",
+                  style: TextStyle(fontSize: 24, color: Colors.white70, fontWeight: FontWeight.w400),
+                ),
+              ],
             ),
             const SizedBox(height: 20),
             Row(
