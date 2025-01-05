@@ -1,19 +1,20 @@
-# Set Dart as the primary language
+# Set Dart as the main language
 *.dart linguist-language=Dart
 
-# Ignore other languages in the stats
-*.cpp linguist-language=ignore
+# Ignore CMake files in stats
 *.cmake linguist-language=ignore
+CMakeLists.txt linguist-language=ignore
+
+# Ignore other non-Dart files
+*.cpp linguist-language=ignore
 *.swift linguist-language=ignore
 *.c linguist-language=ignore
 *.html linguist-language=ignore
-*.json linguist-language=ignore
 *.xml linguist-language=ignore
+*.json linguist-language=ignore
 *.gradle linguist-language=ignore
 *.java linguist-language=ignore
 
-# Ignore build files and assets
+# Mark build and asset directories as vendor
 build/ linguist-vendored
 assets/ linguist-vendored
-*.lock linguist-vendored
-*.log linguist-vendored
