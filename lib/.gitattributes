@@ -1,7 +1,19 @@
-# Exclude non-Dart files from language statistics
+# Force Dart files to count as primary language
+*.dart linguist-language=Dart
+
+# Ignore other languages in the stats
 *.cpp linguist-language=ignore
-*.h linguist-language=ignore
-*.cmake linguist-language=ignore
+//*.cmake linguist-language=ignore
 *.swift linguist-language=ignore
 *.c linguist-language=ignore
 *.html linguist-language=ignore
+*.json linguist-language=ignore
+*.xml linguist-language=ignore
+*.gradle linguist-language=ignore
+*.java linguist-language=ignore
+
+# Ignore build files and assets
+build/ linguist-vendored
+assets/ linguist-vendored
+*.lock linguist-vendored
+*.log linguist-vendored
