@@ -1,23 +1,7 @@
-# Force Dart to be detected
-*.dart linguist-detectable=true
-
-# Ignore CMake and C++ files
-*.cmake linguist-detectable=false
-*.cpp linguist-detectable=false
-*.h linguist-detectable=false
-*.c linguist-detectable=false
-
-# Ignore other non-Dart files
-*.html linguist-detectable=false
-*.swift linguist-detectable=false
-*.json linguist-detectable=false
-*.yaml linguist-detectable=false
-*.md linguist-detectable=false
-*.txt linguist-detectable=false
-*.sh linguist-detectable=false
-
-# Mark specific folders as vendored (ignored in stats)
-build/* linguist-vendored
-vendor/* linguist-vendored
-cmake/* linguist-vendored
-third_party/* linguist-vendored
+# Exclude non-Dart files from language statistics
+*.cpp linguist-language=ignore
+*.h linguist-language=ignore
+*.cmake linguist-language=ignore
+*.swift linguist-language=ignore
+*.c linguist-language=ignore
+*.html linguist-language=ignore
