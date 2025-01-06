@@ -154,8 +154,8 @@ class _HomeState extends State<Home> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
-                  "HELLO AWAIS",
+                const Text( 
+                  "Hello Awais",
                   style: TextStyle(fontSize: 36, color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ],
