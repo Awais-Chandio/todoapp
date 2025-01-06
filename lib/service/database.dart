@@ -8,7 +8,8 @@ class DatabaseMethode {
         .set(userTodayMap);
   }
 
-  Future addTomorrowWork(Map<String, dynamic> userTomorrowMap, String id) async {
+  Future addTomorrowWork(
+      Map<String, dynamic> userTomorrowMap, String id) async {
     return await FirebaseFirestore.instance
         .collection("tomorrow")
         .doc(id)

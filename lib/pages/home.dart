@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
@@ -16,7 +15,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   bool today = true, tomorrow = false, nextWeek = false;
   Stream? todoStream;
-  DateTime selectedDateTime = DateTime.now();  // Default to current date and time
+  DateTime selectedDateTime =
+      DateTime.now(); // Default to current date and time
 
   @override
   void initState() {
@@ -27,7 +27,11 @@ class _HomeState extends State<Home> {
   // Fetch tasks based on selected category
   getOnTheLoad() async {
     todoStream = await DatabaseMethode().getAllTheWork(
-      today ? "today" : tomorrow ? "tomorrow" : "nextWeek",
+      today
+          ? "today"
+          : tomorrow
+              ? "tomorrow"
+              : "nextWeek",
     );
     setState(() {});
   }
@@ -47,8 +51,12 @@ class _HomeState extends State<Home> {
         title: const Text("Delete Task"),
         content: const Text("Are you sure you want to delete this task?"),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text("Cancel")),
-          TextButton(onPressed: () => Navigator.pop(context, true), child: const Text("Delete")),
+          TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text("Cancel")),
+          TextButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text("Delete")),
         ],
       ),
     );
@@ -56,7 +64,11 @@ class _HomeState extends State<Home> {
     if (confirm) {
       await DatabaseMethode().deleteTask(
         taskId,
-        today ? "today" : tomorrow ? "tomorrow" : "nextWeek",
+        today
+            ? "today"
+            : tomorrow
+                ? "tomorrow"
+                : "nextWeek",
       );
     }
   }
@@ -81,7 +93,8 @@ class _HomeState extends State<Home> {
                   : DateTime.now();
 
               return ListTile(
-                contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 tileColor: Colors.white.withOpacity(0.1),
                 leading: Checkbox(
                   activeColor: const Color(0xFF279cfb),
@@ -89,7 +102,11 @@ class _HomeState extends State<Home> {
                   onChanged: (newValue) async {
                     await DatabaseMethode().updateIfTicked(
                       ds["Id"],
-                      today ? "today" : tomorrow ? "tomorrow" : "nextWeek",
+                      today
+                          ? "today"
+                          : tomorrow
+                              ? "tomorrow"
+                              : "nextWeek",
                     );
                     setState(() {
                       ds.reference.update({"Yes": newValue});
@@ -98,7 +115,10 @@ class _HomeState extends State<Home> {
                 ),
                 title: Text(
                   ds["Work"],
-                  style: const TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w400),
+                  style: const TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400),
                 ),
                 subtitle: Text(
                   "Due on: ${formatDateTime(taskDateTime)}",
@@ -133,8 +153,8 @@ class _HomeState extends State<Home> {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.only(top: 90, left: 10,right: 5),
-      //  padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1, left: 10, right: 5),
+        padding: const EdgeInsets.only(top: 90, left: 10, right: 5),
+        //  padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1, left: 10, right: 5),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
@@ -154,9 +174,12 @@ class _HomeState extends State<Home> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text( 
+                const Text(
                   "Hello Awais",
-                  style: TextStyle(fontSize: 36, color: Colors.white, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 36,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -166,13 +189,15 @@ class _HomeState extends State<Home> {
               children: [
                 const Text(
                   "Add your tasks here",
-                  style: TextStyle(fontSize: 24, color: Colors.white70, fontWeight: FontWeight.w400),
+                  style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white70,
+                      fontWeight: FontWeight.w400),
                 ),
               ],
             ),
             const SizedBox(height: 20),
             Row(
-              
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 buildCategoryButton("Today", today, () async {
@@ -219,11 +244,13 @@ class _HomeState extends State<Home> {
         decoration: BoxDecoration(
           color: isSelected ? const Color(0xFF3A85F5) : Colors.transparent,
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: isSelected ? Colors.transparent : Colors.white, width: 2),
+          border: Border.all(
+              color: isSelected ? Colors.transparent : Colors.white, width: 2),
         ),
         child: Text(
           text,
-          style: const TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
     );
@@ -231,99 +258,103 @@ class _HomeState extends State<Home> {
 
   // Function to open the add task dialog
   Future openBox() => showDialog(
-    context: context,
-    builder: (context) => AlertDialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      content: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
+        context: context,
+        builder: (context) => AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          content: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: const Icon(Icons.close, color: Colors.red),
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: const Icon(Icons.close, color: Colors.red),
+                    ),
+                    const Spacer(),
+                    const Text("Add Task",
+                        style: TextStyle(
+                            color: Colors.teal, fontWeight: FontWeight.bold)),
+                  ],
                 ),
-                const Spacer(),
-                const Text("Add Task", style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold)),
-              ],
-            ),
-            const SizedBox(height: 20),
-            const Text("Task Description"),
-            const SizedBox(height: 10),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black38, width: 2),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: TextField(
-                controller: todoController,
-                decoration: const InputDecoration(border: InputBorder.none, hintText: "Enter your task"),
-              ),
-            ),
-            const SizedBox(height: 20),
-            const Text("Select Date and Time"),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () async {
-                DateTime? pickedDate = await showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime(2000),
-                  lastDate: DateTime(2101),
-                );
-                if (pickedDate != null) {
-                  TimeOfDay? pickedTime = await showTimePicker(
-                    context: context,
-                    initialTime: TimeOfDay.fromDateTime(DateTime.now()),
-                  );
-                  if (pickedTime != null) {
-                    selectedDateTime = DateTime(
-                      pickedDate.year,
-                      pickedDate.month,
-                      pickedDate.day,
-                      pickedTime.hour,
-                      pickedTime.minute,
+                const SizedBox(height: 20),
+                const Text("Task Description"),
+                const SizedBox(height: 10),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black38, width: 2),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: TextField(
+                    controller: todoController,
+                    decoration: const InputDecoration(
+                        border: InputBorder.none, hintText: "Enter your task"),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Text("Select Date and Time"),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () async {
+                    DateTime? pickedDate = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2101),
                     );
-                  }
-                }
-              },
-              child: Text(formatDateTime(selectedDateTime)),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                String taskId = randomAlphaNumeric(10);
-                today
-                    ? DatabaseMethode().addTodayWork({
-                        "Work": todoController.text,
-                        "Id": taskId,
-                        "Yes": false,
-                        "DateTime": selectedDateTime,
-                      }, taskId)
-                    : tomorrow
-                        ? DatabaseMethode().addTomorrowWork({
+                    if (pickedDate != null) {
+                      TimeOfDay? pickedTime = await showTimePicker(
+                        context: context,
+                        initialTime: TimeOfDay.fromDateTime(DateTime.now()),
+                      );
+                      if (pickedTime != null) {
+                        selectedDateTime = DateTime(
+                          pickedDate.year,
+                          pickedDate.month,
+                          pickedDate.day,
+                          pickedTime.hour,
+                          pickedTime.minute,
+                        );
+                      }
+                    }
+                  },
+                  child: Text(formatDateTime(selectedDateTime)),
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    String taskId = randomAlphaNumeric(10);
+                    today
+                        ? DatabaseMethode().addTodayWork({
                             "Work": todoController.text,
                             "Id": taskId,
                             "Yes": false,
                             "DateTime": selectedDateTime,
                           }, taskId)
-                        : DatabaseMethode().addNextWeekWork({
-                            "Work": todoController.text,
-                            "Id": taskId,
-                            "Yes": false,
-                            "DateTime": selectedDateTime,
-                          }, taskId);
-                Navigator.pop(context);
-                todoController.clear();
-                setState(() {});
-              },
-              child: const Text("Add Task"),
+                        : tomorrow
+                            ? DatabaseMethode().addTomorrowWork({
+                                "Work": todoController.text,
+                                "Id": taskId,
+                                "Yes": false,
+                                "DateTime": selectedDateTime,
+                              }, taskId)
+                            : DatabaseMethode().addNextWeekWork({
+                                "Work": todoController.text,
+                                "Id": taskId,
+                                "Yes": false,
+                                "DateTime": selectedDateTime,
+                              }, taskId);
+                    Navigator.pop(context);
+                    todoController.clear();
+                    setState(() {});
+                  },
+                  child: const Text("Add Task"),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
-    ),
-  );
+      );
 }
